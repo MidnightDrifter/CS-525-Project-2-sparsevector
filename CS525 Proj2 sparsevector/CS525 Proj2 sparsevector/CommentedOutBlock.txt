@@ -1,0 +1,341 @@
+Commented out block:
+
+
+
+
+
+/*If current = null, new list, so just create node with given position and data
+if(current == NULL)
+{
+printf("Error checking: current == NULL\n");
+(*p_e) = nodeToInsert;
+
+
+
+printf("Error checking - current==NULL:  starting node's position and data are (%i, %i)\n", nodeToInsert->pos, nodeToInsert->data);
+return 0;
+}
+
+else{printf("Current node data, position, and next:  (%i, %i, %i)\n", current->data, current->pos, current->next);}
+
+printf("Creating next node\n");
+
+ElementNode * next = (*p_e)->next;
+
+
+printf("Testing values:  temp node position and data:  (%i, %i)\n", nodeToInsert->pos, nodeToInsert->data);
+printf("Testing values:  current node position and data:  (%i, %i)\n", current->pos, current->data);
+if(next != NULL)
+{
+printf("Testing values - initial test:  next node position and data:  (%i, %i)\n", next->pos, next->data);
+}
+
+
+if(nodeToInsert==NULL)
+{
+printf("ERROR:  Insufficient memory.\n");
+return 1;
+}
+
+
+
+If next=null, list only  has 1 node, so place it with regards to current as needed
+else if(next == NULL)
+{
+
+if((*p_e) == NULL)
+{
+printf("Dafak why is *p_e NULL\n");
+}
+printf("Error checking:  next == NULL\n");
+if((*p_e)->pos >pos)
+{
+printf("Error checking:  node pos > input pos\n");
+(*p_e)->next = nodeToInsert;
+p_e = &nodeToInsert;
+
+
+(*p_e)->next = nodeToInsert;  */
+
+
+
+/*nodeToInsert->next = (*p_e);
+(*p_e)=nodeToInsert;
+
+}
+
+else if((*p_e)->pos <pos)
+{
+printf("Error checking:  node pos < input pos\n");
+(*p_e)->next = nodeToInsert;
+printf("Error checking:  *p_e-> next updated successfully\n");
+
+
+/*nodeToInsert->next = (*p_e);
+(*p_e) = nodeToInsert;
+printf("Error checking - next == NULL:  2nd node's position and data are (%i, %i)\n", nodeToInsert->pos, nodeToInsert->data);
+next = nodeToInsert;
+printf("Error checking - next == NULL:  2nd node's position and data updated to (%i, %i)\n", next->pos, next->data);
+}
+
+else
+{
+if(val == 0)
+{
+printf("Error checking - next == NULL:  val == 0, freeing current node\n");
+free(current);
+}
+else
+{
+(*p_e)->data=val;
+}
+}
+
+
+next = (*p_e)->next;
+if(next!=NULL)
+{
+printf("Error checking: next == NULL, should be updated.  'next' position and value:  (%i, %i)\n", next->pos, next->data);
+}
+
+return 0;
+
+}
+
+
+
+
+else
+{
+printf("Testing values - entered loop:  next node position and data:  (%i, %i)\n", next->pos, next->data);
+
+
+
+do
+{
+
+if(next != NULL)
+{
+
+if(pos < current->pos)
+{
+nodeToInsert->next = current;
+return 0;
+}
+
+else if(pos > current->pos && pos < next->pos)
+{
+
+printf("Error checking:  current < pos < next:  (%i, %i, %i)\n", current->pos, pos, next->pos);
+
+current->next = nodeToInsert;
+nodeToInsert->next = next;
+return 0;
+}
+
+else if(pos > current->pos && current->next == NULL)
+{
+current->next = nodeToInsert;
+return 0;
+
+
+
+}
+
+else if(pos == next->pos)
+{
+if(val ==0)
+{
+current->next = next->next;
+free(next);
+}
+
+else
+{
+current->data = val;
+}
+return 0;
+}
+}
+
+
+else
+{
+if(current->pos < pos)
+{
+current->next = nodeToInsert;
+}
+else
+{
+printf("Something has gone horribly, horribly wrong here.\n");
+}
+return 0;
+}
+current = next;
+next = (next->next);
+
+if(next != NULL)
+{printf("Testing values - in loop:  current node position and data:  (%i, %i)\n", current->pos, current->data);
+printf("Testing values - in loop:  next node position and data:  (%i, %i)\n", next->pos, next->data);
+}
+
+
+
+
+}while(next != NULL);
+
+
+
+
+}
+
+
+int inserted;
+inserted =1;
+printf("Creating first ElementNode 'previous'.  \n");
+ElementNode * previous = (*p_e);
+printf("'previous' created successfully \n");
+
+printf("Creating second ElementNode_handle 'current'. \n");
+ElementNode current = *((*previous).next);
+printf("'current' created successfully \n");
+
+printf("Creating temporary node.\n");
+ElementNode * nodeToInsert = malloc(sizeof(ElementNode));
+
+
+
+If previous = null, this is a new list, so all we need to do is just create the node with the given position and data
+
+
+
+if(&nodeToInsert == NULL)
+{
+printf("ERROR: Insufficient memory.\n");
+return 1;
+}
+
+printf("Temporary node created successfully\n");
+
+
+printf("Assigning position to temporary node.\n");
+(*nodeToInsert).pos = pos;
+printf("Position assigned successfully.\n");
+printf("Assigning data to temporary node\n");
+(*nodeToInsert).data = val;
+printf("Data assigned successfully.\n");
+
+printf("Position of temporary node:  %i\n", (*nodeToInsert).pos);
+
+
+if(&previous == NULL)
+{
+return 1;
+}
+
+If previous != NULL and current = NULL, there's only one node in the list, so the new node goes either in front of or behind it
+else if(&current == NULL)
+{
+if (pos > (*previous).pos)
+{
+(*previous).next = nodeToInsert;
+return 0;
+}
+
+else if(pos < (*previous).pos)
+{
+(*nodeToInsert).next = previous;
+return 0;
+}
+
+else
+{
+if(val == 0)
+{
+printf("Should be deleting from list here - single node.\n");
+free(previous);
+
+return 0;
+}
+
+else
+{
+printf("Should be overwriting data here - single node.\n");
+
+(*previous).data = val;
+return 0;
+}
+}
+
+}
+
+
+if(&current==NULL)
+{
+printf("Current is NULL, something's wrong here.\n");
+}
+
+else{
+do
+{
+printf("Do-while loop entered.\n");
+printf("Position of node 'previous':  %i\n", (*previous).pos);
+
+printf("Position of node 'current':  %s\n", current->pos);
+
+
+
+if (pos > (*previous).pos  && pos < (current).pos)
+{
+printf("Should be inserting into list here. \n");
+
+(*previous).next = nodeToInsert;
+(*nodeToInsert).next = &current;
+inserted ==0;
+return 0;
+}
+
+else if(current->pos < pos)
+{
+current->next = p_e;
+inserted==0;
+
+}
+
+
+
+
+else if(pos == current.pos)
+{
+if(val == 0)
+{
+printf("Should be deleting from list here\n");
+(*previous).next = &(current.next);
+free(&current);
+return 0;
+}
+
+else
+{
+printf("Should be overwriting data here.\n");
+
+(*previous).data = val;
+return 0;
+}
+}
+printf("Updating previous and current nodes.\n");
+printf("Position of node 'previous':  %i\n", (*previous).pos);
+if(&current)
+{printf("Position of node 'current':  %i\n", current.pos);}
+previous = &current;
+current= *(current.next);
+
+printf("Updated position of node 'previous':  %i\n", (*previous).pos);
+printf("Updated position of node 'current':  %i\n", current.pos);
+
+}
+while(inserted==1  && &current);
+
+
+}
+*/
