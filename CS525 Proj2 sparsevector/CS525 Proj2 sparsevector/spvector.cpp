@@ -327,6 +327,14 @@ void free_elements(ElementNode_handle p_e)
 
 
 
+int insert_element(ElementNode** e, int i, int j)
+{
+	ElementNode_handle * eh = e;
+	return (insert_element(eh, i, j));
+}
+
+
+
 
 /*  Row functions */
 

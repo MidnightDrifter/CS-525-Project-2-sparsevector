@@ -89,6 +89,13 @@ ElementNode_handle add( ConstElementNode_handle p_e1,ConstElementNode_handle p_e
  **/
 void free_elements( ElementNode_handle p_e );
 
+int insert_element(ElementNode** e, int i, int j);
+
+
+
+
+
+
 /*===============*
  * row functions *
  *===============*/
