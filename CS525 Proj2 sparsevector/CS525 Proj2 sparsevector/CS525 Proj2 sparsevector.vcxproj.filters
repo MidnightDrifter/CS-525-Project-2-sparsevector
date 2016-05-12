@@ -124,6 +124,9 @@
     <None Include="out24">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="handout.pdf">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="CommentedOutBlock.txt">

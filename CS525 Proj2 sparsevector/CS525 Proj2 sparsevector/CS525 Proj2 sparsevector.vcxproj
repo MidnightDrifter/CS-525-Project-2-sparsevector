@@ -122,6 +122,7 @@
     <ClCompile Include="spvector.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="handout.pdf" />
     <None Include="Makefile" />
     <None Include="Makefile2" />
     <None Include="out0" />

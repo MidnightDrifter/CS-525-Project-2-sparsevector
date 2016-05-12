@@ -95,8 +95,174 @@ int  determinant(ConstRowNode_handle p_r, int dim)
 }
 
 
+int insert_element(ElementNode_handle * p_e, int pos, int val)
+{
 
 
+	/*
+	printf("Creating node to insert\n");
+
+
+	printf("Breaks at 1\n");*/
+	ElementNode * nodeToInsert = (ElementNode *)malloc(sizeof(ElementNode));
+
+
+	if (nodeToInsert == NULL)
+	{
+		/*printf("ERROR:  Insufficient memory.\n");*/
+		return 1;
+	}
+	/*
+	printf("Breaks at 2\n");
+
+
+	/* printf("Assigning values\n");*/
+
+
+	nodeToInsert->data = val;
+	nodeToInsert->pos = pos;
+	nodeToInsert->next = NULL;
+
+
+	/*printf("Breaks at 3\n");
+	/* printf("Creating current node\n");*/
+	ElementNode * current = *p_e;
+	/*printf("Breaks at 3.5\n");
+	*/
+	if (current == NULL)
+	{
+		if (val != 0)
+		{
+			*p_e = nodeToInsert;
+		}
+		/* printf("Error checking:  current==NULL, so assigned nodeToInsert to *p_e.  Should have 3 0's here:  %i, %i, %i\n", nodeToInsert->data - (*p_e)->data, nodeToInsert->pos - (*p_e)->pos, nodeToInsert->next - (*p_e)->next);
+		*/return 0;
+	}
+	/*printf("Breaks at 4\n");
+	*/ElementNode * next = (*p_e)->next;
+
+	if (next == NULL)
+	{
+		/* If input pos < head pos, this node becomes the new head   DOUBLE CHECK DIS  */
+		if (pos < (*p_e)->pos)
+		{/*printf("Breaks at 5\n");
+		 */ nodeToInsert->next = (*p_e);
+		(*p_e)->next = NULL;
+		(*p_e) = nodeToInsert;
+		return 0;
+		}
+		/*  If input pos > head pos, this node comes AFTER the head node, and the head stays the same  */
+		else if (pos >(*p_e)->pos)
+		{
+
+			/*printf("Breaks at 6\n");*/
+			(*p_e)->next = nodeToInsert;
+
+			return 0;
+		}
+
+		else if (val == 0)
+		{
+			/*
+			printf("Breaks at 7\n");
+			*/ free((*p_e));
+		return 0;
+		}
+
+		else
+		{
+
+			/*printf("Breaks at 8\n");
+			*/
+			(*p_e)->data = val;
+			return 0;
+		}
+	}
+
+
+
+	do
+	{
+
+		/* Input pos < starting node pos, make nodeToInsert the new head and point it to the old one  */
+		if (pos < (*p_e)->pos)
+		{
+			/* printf("Breaks at 9\n");*/
+			nodeToInsert->next = (*p_e);
+			(*p_e) = nodeToInsert;
+			return 0;
+
+		}
+		/* Input pos == starting node pos, delete & update head if val = 0, update data otherwise */
+		else if (pos == (*p_e)->pos)
+		{
+			if (val == 0)
+			{
+				/* printf("Breaks at 10\n");*/
+
+				nodeToInsert = (*p_e)->next;
+				free(*p_e);
+				*p_e = nodeToInsert;
+				return 0;
+			}
+			else
+			{
+				/*printf("Breaks at 11\n");*/
+				(*p_e)->data = val;
+				return 0;
+			}
+		}
+
+		/* Input pos fits between some two nodes, put it in between those two nodes  */
+		else if (next != NULL && current->pos < pos && next->pos > pos)
+		{
+			/*printf("Breaks at 12\n");*/
+			current->next = nodeToInsert;
+			nodeToInsert->next = next;
+			return 0;
+		}
+
+		else if (next != NULL && next->pos == pos)
+		{
+
+			/*printf("Breaks at 13\n");
+			*/
+			if (val == 0)
+			{
+				current->next = next->next;
+				free(next);
+				return 0;
+			}
+
+			else
+			{
+				next->data = val;
+				return 0;
+			}
+		}
+
+		/* Reached the end of the list and input position STILL greater than last node's position, just append nodeToInsert to the end of the list */
+		else if (current->pos < pos && next == NULL)
+		{
+
+			/*printf("Breaks at 14\n");*/
+			current->next = nodeToInsert;
+			return 0;
+		}
+
+		/*  */
+		else
+		{
+
+
+			/*printf("Breaks at 15\n");*/
+			current = next;
+			next = next->next;
+		}
+	} while (current != NULL);
+
+
+}
 
 
 
