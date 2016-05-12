@@ -132,5 +132,8 @@
     <Text Include="CommentedOutBlock.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="OriginalInsertElement.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>
